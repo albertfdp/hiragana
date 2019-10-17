@@ -32,7 +32,8 @@ module.exports = {
 
   plugins: [
     new HtmlWebpackPlugin({
-      title: 'Hiragana'
+      title: 'Hiragana',
+      template: './src/index.html'
     }),
     new HotModuleReplacementPlugin()
   ]
