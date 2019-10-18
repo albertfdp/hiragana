@@ -1,62 +1,26 @@
-import Quiz from './quiz';
+import { createQuiz } from './quiz';
 
 describe('Quiz', () => {
   describe('when starting a new quiz', () => {
-    let quiz;
+    it('returns 48 questions', () => {
+      const quiz = createQuiz('easy');
 
-    beforeEach(() => {
-      quiz = new Quiz('easy');
-    });
-
-    it('has 48 questions left', () => {
-      const quiz = new Quiz('easy');
-
-      expect(quiz.getQuestionsLeft()).toEqual(48);
-    });
-
-    it('has 0 questions asked', () => {
-      expect(quiz.progress).toEqual(0);
-    });
-
-    it('returns the first question', () => {
-      const question = quiz.next();
-
-      expect(question).toHaveLength(2);
-      expect(question[1]).toHaveLength(4);
-
-      expect(question[1]).toContain(quiz.getRomaji(question[0]));
-    });
-
-    describe('when answering', () => {
-      describe('with the correct answer', () => {
-        let correctAnswer;
-
-        beforeEach(() => {
-          const question = quiz.next();
-
-          correctAnswer = quiz.answer(quiz.getRomaji(question[0]));
-        });
-
-        it('increases the number of questions asked', () => {
-          expect(quiz.progress).toEqual(1);
-          expect(correctAnswer).toBe(true);
-        });
-      });
+      expect(quiz).toHaveLength(48);
     });
 
     describe('with level medium', () => {
       it('has 72 questions left', () => {
-        const quiz = new Quiz('medium');
+        const quiz = createQuiz('medium');
 
-        expect(quiz.getQuestionsLeft()).toEqual(72);
+        expect(quiz).toHaveLength(72);
       });
     });
 
     describe('with level difficult', () => {
       it('has 104 questions left', () => {
-        const quiz = new Quiz('difficult');
+        const quiz = createQuiz('difficult');
 
-        expect(quiz.getQuestionsLeft()).toEqual(104);
+        expect(quiz).toHaveLength(104);
       });
     });
   });

@@ -25,7 +25,7 @@ const timeoutKeyframe = keyframes`
 const Bar = styled.div`
   animation-play-state: ${props => (props.animating ? 'running' : 'paused')};
   animation-duration: ${props => props.duration}ms;
-  animation-iteration-count: 1;
+  animation-iteration-count: infinite;
   animation-name: ${timeoutKeyframe};
   animation-timing-function: linear;
   background-color: ${props => props.theme.colorRed};
