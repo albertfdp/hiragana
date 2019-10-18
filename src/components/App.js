@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 import Hiragana from './Hiragana';
 import { ChoiceGroup, ChoiceButton } from './ChoiceButton';
+import Timer from './Timer';
 
 import Quiz from '../services/quiz';
 
@@ -28,6 +29,10 @@ const App = () => {
   const [quiz, dispatch] = useReducer(reducer, null, createQuiz);
   const [hiragana, choices] = quiz.next();
 
+  const onTimeout = () => {
+    console.log('Timeout!');
+  };
+
   return (
     <Container>
       <Hiragana char={hiragana} size="large" />
@@ -36,6 +41,7 @@ const App = () => {
           <ChoiceButton key={choice}>{choice}</ChoiceButton>
         ))}
       </ChoiceGroup>
+      <Timer id={hiragana} onTimeout={onTimeout} />
     </Container>
   );
 };

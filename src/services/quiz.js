@@ -23,7 +23,7 @@ class Quiz {
     return Object.keys(data).length;
   }
 
-  get questionsNumber() {
+  get total() {
     return this.dictionary.length;
   }
 
@@ -32,7 +32,7 @@ class Quiz {
   }
 
   getQuestionsLeft() {
-    return this.questionsNumber - this.progress;
+    return this.total - this.progress;
   }
 
   getRandomIndex(array) {
