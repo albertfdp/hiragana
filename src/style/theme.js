@@ -10,7 +10,8 @@ const baseColors = {
 };
 
 const fontSizes = {
-  fontSizeLarge: 128,
+  fontSizeHuge: 128,
+  fontSizeLarge: 21,
   fontSizeBase: 16
 };
 
@@ -37,6 +38,10 @@ export const GlobalStyle = createGlobalStyle`
 
   html, body, #root {
     height: 100%;
+  }
+
+  #root {
+    display: flex;
   }
 `;
 

@@ -5,8 +5,8 @@ const Character = styled.span`
   color: ${props => props.theme.colorRedLight};
   font-size: ${props =>
     props.size === 'large'
-      ? props.theme.fontSizeLarge
-      : props.theme.fontSizeBase}px;
+      ? props.theme.fontSizeHuge
+      : props.theme.fontSizeLarge}px;
 `;
 
 const Hiragana = ({ char, size }) => {

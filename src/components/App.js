@@ -2,6 +2,7 @@ import React, { useReducer } from 'react';
 import styled from 'styled-components';
 
 import Hiragana from './Hiragana';
+import { ChoiceGroup, ChoiceButton } from './ChoiceButton';
 
 import Quiz from '../services/quiz';
 
@@ -10,12 +11,8 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   flex-grow: 1;
-  height: 100%;
   justify-content: center;
-`;
-
-const ChoiceBox = styled.div`
-  border: 1px solid pink;
+  padding: 20px;
 `;
 
 const reducer = (state, action) => {
@@ -34,11 +31,11 @@ const App = () => {
   return (
     <Container>
       <Hiragana char={hiragana} size="large" />
-      <ChoiceBox>
+      <ChoiceGroup>
         {choices.map(choice => (
-          <button key={choice}>{choice}</button>
+          <ChoiceButton key={choice}>{choice}</ChoiceButton>
         ))}
-      </ChoiceBox>
+      </ChoiceGroup>
     </Container>
   );
 };
