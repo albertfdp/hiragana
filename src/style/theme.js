@@ -9,11 +9,19 @@ const baseColors = {
   colorRedLighter: '#F9A1A5'
 };
 
+const fontSizes = {
+  fontSizeLarge: 128,
+  fontSizeBase: 16
+};
+
 const theme = {
   ...baseColors,
   colorText: baseColors.colorBlack,
+
   fontFamily: `'Noto Sans JP', sans-serif`,
-  fontFamilyRomanji: `'Roboto', sans-serif`
+  fontFamilyRomanji: `'Roboto', sans-serif`,
+
+  ...fontSizes
 };
 
 export const GlobalStyle = createGlobalStyle`
@@ -22,7 +30,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   body {
-    font-family: ${props => props.theme.fontFamily};
+    font-family: ${props => props.theme.fontFamilyRomanji};
     background-color: ${props => props.theme.colorWhite};
     color: ${props => props.theme.colorText};
   }
