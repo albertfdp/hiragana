@@ -41,7 +41,11 @@ export const createQuiz = (level = 'easy') => {
   });
 };
 
+export const getAnswer = char => {
+  return data[char];
+};
+
 export const checkAnswer = (question, choice) => {
-  const answer = data[question[0]];
+  const answer = getAnswer(question[0]);
   return answer === choice;
 };
