@@ -40,7 +40,7 @@ describe('The Quiz reducer', () => {
       const [{ questions }, dispatch] = result.current;
 
       const currentQuestion = questions[0];
-      const correctAnswer = getAnswer(currentQuestion[0]);
+      const correctAnswer = currentQuestion.answer;
 
       act(() => {
         dispatch({ type: 'answer', data: correctAnswer });

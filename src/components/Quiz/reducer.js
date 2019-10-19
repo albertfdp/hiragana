@@ -1,4 +1,4 @@
-import { createQuiz, checkAnswer } from '../../services/quiz';
+import { createQuiz } from '../../services/quiz';
 
 export const initialState = {
   questions: [],
@@ -17,10 +17,8 @@ function getNext(questions, index) {
 export const reducer = (state, action) => {
   switch (action.type) {
     case 'answer': {
-      const correctAnswer = checkAnswer(
-        state.questions[state.current],
-        action.data
-      );
+      const { answer } = state.questions[state.current];
+      const correctAnswer = answer === action.data;
 
       return {
         ...state,

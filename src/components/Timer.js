@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import PropTypes from 'prop-types';
 
 import styled, { keyframes } from 'styled-components';
@@ -34,16 +34,17 @@ const Bar = styled.div`
 
 const Timer = ({ id, onTimeout, duration }) => {
   const [isAnimating, setAnimation] = useState(false);
+  const timer = useRef(null);
 
   useEffect(() => {
     setAnimation(true);
 
-    const timer = setTimeout(() => {
+    timer.current = setTimeout(() => {
       setAnimation(false);
       onTimeout && onTimeout();
     }, duration);
 
-    return () => clearTimeout(timer);
+    return () => clearTimeout(timer.current);
   }, [id]);
 
   return (

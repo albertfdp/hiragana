@@ -3,7 +3,6 @@ import styled from 'styled-components';
 
 import Hiragana from '../Hiragana';
 import { ChoiceGroup, ChoiceButton } from '../ChoiceButton';
-import Timer from '../Timer';
 
 import { reducer, initialState, init } from './reducer';
 
@@ -18,26 +17,27 @@ const Container = styled.div`
 
 const Quiz = () => {
   const [state, dispatch] = useReducer(reducer, initialState, init);
-  const [hiragana, choices] = state.questions[state.current];
+  const { question, choices, answer } = state.questions[state.current];
+
+  const onAnswer = choice => {
+    return dispatch({ type: 'answer', data: choice });
+  };
 
   return (
     <Container>
-      <Hiragana char={hiragana} size="large" />
-      <ChoiceGroup>
+      <Hiragana char={question} size="large" />
+      <ChoiceGroup
+        id={question}
+        right={answer}
+        onAnswer={onAnswer}
+        onTimeout={() => dispatch({ type: 'timeout' })}
+      >
         {choices.map(choice => (
-          <ChoiceButton
-            key={choice}
-            onClick={() => dispatch({ type: 'answer', data: choice })}
-          >
+          <ChoiceButton key={choice} value={choice}>
             {choice}
           </ChoiceButton>
         ))}
       </ChoiceGroup>
-      <Timer
-        id={hiragana}
-        onTimeout={() => dispatch({ type: 'timeout' })}
-        duration={10000}
-      />
     </Container>
   );
 };

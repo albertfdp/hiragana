@@ -3,6 +3,7 @@ import { createGlobalStyle } from 'styled-components';
 const baseColors = {
   colorRed: '#F8262A',
   colorWhite: '#FDF9FA',
+  colorGreen: '#0E2D2A',
   colorGray: '#B6B6C6',
   colorBlack: '#251422',
   colorRedLight: '#E65559',

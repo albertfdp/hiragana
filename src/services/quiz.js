@@ -25,7 +25,8 @@ export const createQuiz = (level = 'easy') => {
   const questions = shuffle([...dictionary]);
 
   return questions.map(hiragana => {
-    const choices = [data[hiragana]];
+    const correctAnswer = getAnswer(hiragana);
+    const choices = [correctAnswer];
 
     while (choices.length < 4) {
       const choiceIndex = getRandomIndex(questions);
@@ -37,15 +38,14 @@ export const createQuiz = (level = 'easy') => {
       }
     }
 
-    return [hiragana, shuffle(choices)];
+    return {
+      question: hiragana,
+      answer: correctAnswer,
+      choices: shuffle(choices)
+    };
   });
 };
 
 export const getAnswer = char => {
   return data[char];
-};
-
-export const checkAnswer = (question, choice) => {
-  const answer = getAnswer(question[0]);
-  return answer === choice;
 };
