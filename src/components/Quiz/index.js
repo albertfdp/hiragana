@@ -1,4 +1,5 @@
-import React, { useReducer, useRef, useEffect, useCallback } from 'react';
+import React, { useReducer, useRef } from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import Hiragana from '../Hiragana';
@@ -36,10 +37,7 @@ const getStatusForType = (lastAnswer, correctAnswer) => {
 
 const Quiz = ({ onRestart }) => {
   const timer = useRef(null);
-  const [
-    { current, questions, lastAnswer, answers, completed },
-    dispatch
-  ] = useReducer(reducer, initialState, init);
+  const [state, dispatch] = useReducer(reducer, initialState, init);
 
   const onAnswer = choice => {
     clearTimeout(timer.current);
@@ -55,6 +53,7 @@ const Quiz = ({ onRestart }) => {
     }, 1000);
   };
 
+  const { current, questions, lastAnswer, answers, completed } = state;
   const { question, choices, answer: correctAnswer } = questions[current];
   const status = getStatusForType(lastAnswer, correctAnswer);
 
@@ -86,6 +85,10 @@ const Quiz = ({ onRestart }) => {
       </ChoiceGroup>
     </Container>
   );
+};
+
+Quiz.propTypes = {
+  onRestart: PropTypes.func
 };
 
 export default Quiz;

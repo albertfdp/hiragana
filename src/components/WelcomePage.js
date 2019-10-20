@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import styled from 'styled-components';
 
 import { Button } from './Choice';
@@ -31,6 +33,10 @@ const Welcome = ({ onStart }) => {
       </div>
     </Container>
   );
+};
+
+Welcome.propTypes = {
+  onStart: PropTypes.func.isRequired
 };
 
 export default Welcome;

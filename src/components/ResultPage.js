@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import { Button } from './Choice';
@@ -58,6 +59,11 @@ const ResultPage = ({ results, onRestart }) => {
       </div>
     </Fragment>
   );
+};
+
+ResultPage.propTypes = {
+  results: PropTypes.array.isRequired,
+  onRestart: PropTypes.func.isRequired
 };
 
 export default ResultPage;

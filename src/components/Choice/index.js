@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import Timer from './../Timer';
@@ -97,6 +98,12 @@ export const ChoiceButton = ({ answered, otherAnswered, right, ...props }) => {
   );
 };
 
+ChoiceButton.propTypes = {
+  answered: PropTypes.bool,
+  otherAnswered: PropTypes.bool,
+  right: PropTypes.bool
+};
+
 const StyledGroup = styled.div`
   display: flex;
   flex-wrap: wrap;
@@ -131,4 +138,13 @@ export const ChoiceGroup = ({
       {!answer && <Timer id={id} onTimeout={onTimeout} />}
     </Fragment>
   );
+};
+
+ChoiceGroup.propTypes = {
+  id: PropTypes.string.isRequired,
+  answer: PropTypes.string,
+  children: PropTypes.node,
+  right: PropTypes.string.isRequired,
+  onAnswer: PropTypes.func.isRequired,
+  onTimeout: PropTypes.func.isRequired
 };

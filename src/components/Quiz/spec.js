@@ -2,7 +2,6 @@ import { useReducer } from 'react';
 import { act, renderHook } from '@testing-library/react-hooks';
 
 import { initialState, reducer, init } from './reducer';
-import { getAnswer } from '../../services/quiz';
 
 describe('The Quiz reducer', () => {
   it('returns the initial state', () => {
@@ -60,6 +59,7 @@ describe('The Quiz reducer', () => {
     });
 
     it('updates the current', () => {
+      // eslint-disable-next-line no-unused-vars
       const [_, dispatch] = result.current;
 
       act(() => {
