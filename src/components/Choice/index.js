@@ -2,14 +2,14 @@ import React, { Fragment } from 'react';
 import styled from 'styled-components';
 
 import Timer from './../Timer';
-import { bounceIn, shake } from '../../style/keyframes';
+import { bounceIn } from '../../style/keyframes';
 
 const Button = styled.button`
   align-items: center;
   background-color: transparent;
   border-radius: 3px;
-  border: 2px solid ${props => props.theme.colorRedLight};
-  color: ${props => props.theme.colorRedLight};
+  border: 2px solid ${props => props.theme.colorWhite};
+  color: ${props => props.theme.colorWhite};
   display: flex;
   flex-grow: 1;
   font-family: ${props => props.theme.fontFamilyRomanji};
@@ -26,8 +26,8 @@ const Button = styled.button`
   &:hover,
   &:focus {
     cursor: pointer;
-    background-color: ${props => props.theme.colorRedLighter};
-    color: ${props => props.theme.colorWhite};
+    background-color: ${props => props.theme.colorWhite};
+    color: ${props => props.theme.colorBlue};
   }
 `;
 
@@ -47,10 +47,10 @@ const FadeButton = styled(Button)`
 const RightAnswer = styled(Button)`
   animation-duration: 0.7s;
   animation-fill-mode: both;
-  /* animation-name: ${bounceIn}; */
+  animation-name: ${bounceIn};
   background-color: ${props => props.theme.colorRight};
   border-color: ${props => props.theme.colorRight};
-  color: ${props => props.theme.colorWhite};
+  color: ${props => props.theme.colorBlack};
 
   &:disabled {
     opacity: 1;
@@ -61,14 +61,11 @@ const RightAnswer = styled(Button)`
   &:disabled:hover,
   &:disabled:focus {
     background-color: ${props => props.theme.colorRight};
-    color: ${props => props.theme.colorWhite};
+    color: ${props => props.theme.colorBlack};
   }
 `;
 
 const WrongAnswer = styled(Button)`
-  animation-duration: 0.7s;
-  animation-fill-mode: both;
-  animation-name: ${shake};
   background-color: ${props => props.theme.colorWrong};
   border-color: ${props => props.theme.colorWrong};
   color: ${props => props.theme.colorWhite};

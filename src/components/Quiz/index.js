@@ -60,10 +60,13 @@ const Quiz = () => {
   };
 
   const { question, choices, answer: correctAnswer } = questions[current];
+  const status = getStatusForType(lastAnswer, correctAnswer);
 
   return (
-    <Container status={getStatusForType(lastAnswer, correctAnswer)}>
-      <Hiragana char={question} size="large" />
+    <Container status={status}>
+      <Hiragana size="large" status={status}>
+        {question}
+      </Hiragana>
       <ChoiceGroup
         id={question}
         right={correctAnswer}

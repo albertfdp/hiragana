@@ -2,8 +2,9 @@ import { createGlobalStyle } from 'styled-components';
 
 const baseColors = {
   colorRed: '#F8262A',
-  colorWhite: '#FDF9FA',
+  colorWhite: '#F8F1DA',
   colorGreen: '#0E2D2A',
+  colorBlue: '#3F3F52',
   colorGray: '#B6B6C6',
   colorBlack: '#251422',
   colorRedLight: '#E65559',
@@ -18,9 +19,10 @@ const fontSizes = {
 
 const theme = {
   ...baseColors,
-  colorText: baseColors.colorBlack,
-  colorRight: 'green',
-  colorWrong: baseColors.colorRed,
+  colorText: baseColors.colorWhite,
+  colorRight: baseColors.colorWhite,
+  colorWrong: baseColors.colorRedLight,
+  colorBackground: baseColors.colorBlue,
 
   fontFamily: `'Noto Sans JP', sans-serif`,
   fontFamilyRomanji: `'Roboto', sans-serif`,
@@ -35,7 +37,7 @@ export const GlobalStyle = createGlobalStyle`
 
   body {
     font-family: ${props => props.theme.fontFamilyRomanji};
-    background-color: ${props => props.theme.colorWhite};
+    background-color: ${props => props.theme.colorBackground};
     color: ${props => props.theme.colorText};
   }
 

@@ -1,7 +1,21 @@
-import React from 'react';
 import styled from 'styled-components';
 
+import { bounceIn, shake } from '../style/keyframes';
+
+const animationMapper = {
+  right: bounceIn,
+  wrong: shake
+};
+
+const animationDurationMapper = {
+  right: 1,
+  wrong: 0.7
+};
+
 const Character = styled.span`
+  animation-duration: ${props => animationDurationMapper[props.status]}s;
+  animation-fill-mode: both;
+  animation-name: ${props => animationMapper[props.status]};
   transition: color 300ms ease-in-out;
   font-size: ${props =>
     props.size === 'large'
@@ -9,8 +23,4 @@ const Character = styled.span`
       : props.theme.fontSizeLarge}px;
 `;
 
-const Hiragana = ({ char, size }) => {
-  return <Character size={size}>{char}</Character>;
-};
-
-export default Hiragana;
+export default Character;
