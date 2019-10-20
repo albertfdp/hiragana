@@ -21,6 +21,12 @@ const Character = styled.span`
     props.size === 'large'
       ? props.theme.fontSizeHuge
       : props.theme.fontSizeLarge};
+
+  @media (max-width: 980px) {
+    align-items: center;
+    display: flex;
+    height: 100%;
+  }
 `;
 
 export default Character;

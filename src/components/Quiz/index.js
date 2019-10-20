@@ -13,7 +13,7 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   flex-grow: 1;
-  justify-content: center;
+  justify-content: space-around;
   padding: 20px;
   color: ${props =>
     props.status === 'right'
@@ -21,6 +21,10 @@ const Container = styled.div`
       : props.status === 'wrong'
       ? props.theme.colorWrong
       : props.theme.colorText};
+
+  @media (min-width: 981px) {
+    justify-content: center;
+  }
 `;
 
 const getStatusForType = (lastAnswer, correctAnswer) => {

@@ -23,7 +23,7 @@ const StartButton = styled(Button)`
   min-width: 200px;
   width: 80%;
 
-  @media (min-width: 980px) {
+  @media (min-width: 981px) {
     width: initial;
   }
 `;
