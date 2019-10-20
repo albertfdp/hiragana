@@ -158,7 +158,6 @@ export const ChoiceGroup = ({
 
   useEffect(() => {
     document.addEventListener('keydown', onKeyDown);
-    document.activeElement.blur();
 
     return () => {
       document.removeEventListener('keydown', onKeyDown);

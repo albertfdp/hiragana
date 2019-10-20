@@ -30,6 +30,12 @@ const Wrapper = styled.div`
   padding: 20px;
   position: relative;
   transition: transform 100ms ease-in;
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  user-select: none;
 
   & > svg {
     bottom: 10px;
@@ -60,6 +66,7 @@ const Character = ({ children, status, ...props }) => {
 
   return (
     <Wrapper
+      autoFocus
       role="button"
       onClick={() => textToSpeech(children)}
       status={status}
