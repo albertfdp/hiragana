@@ -6,6 +6,8 @@ import { ChoiceGroup, ChoiceButton } from '../Choice';
 import ResultPage from '../ResultPage';
 
 import { Container, Question, Answers } from './views';
+import CancelButton from '../CancelButton';
+
 import { reducer, initialState, init } from './reducer';
 
 const getStatusForType = (lastAnswer, correctAnswer) => {
@@ -52,6 +54,7 @@ const Quiz = ({ onRestart }) => {
 
   return (
     <Container status={status}>
+      <CancelButton onClick={onRestart} />
       <Question>
         <Hiragana size="large" status={status}>
           {question}
