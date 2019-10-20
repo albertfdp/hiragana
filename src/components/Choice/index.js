@@ -1,5 +1,6 @@
 import React, { Fragment, useEffect, useCallback } from 'react';
 import PropTypes from 'prop-types';
+
 import styled from 'styled-components';
 
 import Timer from './../Timer';
@@ -21,8 +22,9 @@ export const Button = styled.button`
   padding: 1em 6px;
   position: relative;
   text-align: center;
+  transform: scale(1);
   transition: background-color 100ms ease-in, color 100ms ease-in,
-    border-color 100ms ease-in, opacity 500ms ease-in;
+    border-color 100ms ease-in, opacity 500ms ease-in, transform 100ms ease-in-out;
   width: 100%;
 
   &:before {
@@ -31,6 +33,10 @@ export const Button = styled.button`
     left: 20px;
     opacity: 0.5;
     position: absolute;
+  }
+
+  &:active {
+    transform: scale(1.01);
   }
 
   &:hover,
@@ -152,6 +158,7 @@ export const ChoiceGroup = ({
 
   useEffect(() => {
     document.addEventListener('keydown', onKeyDown);
+    document.activeElement.blur();
 
     return () => {
       document.removeEventListener('keydown', onKeyDown);

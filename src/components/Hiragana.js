@@ -19,6 +19,9 @@ const animationDurationMapper = {
 };
 
 const Wrapper = styled.div`
+  animation-duration: ${props => animationDurationMapper[props.status]}s;
+  animation-fill-mode: both;
+  animation-name: ${props => animationMapper[props.status]};
   background-color: ${props => darken(0.1, props.theme.colorBackground)};
   border-radius: 4px;
   box-shadow: 0 0 2px 2px ${props => darken(0.3, props.theme.colorBackground)};
@@ -41,9 +44,6 @@ const Wrapper = styled.div`
 `;
 
 const StyledCharacter = styled.span`
-  animation-duration: ${props => animationDurationMapper[props.status]}s;
-  animation-fill-mode: both;
-  animation-name: ${props => animationMapper[props.status]};
   transition: color 300ms ease-in-out;
   line-height: 1;
   font-size: ${props =>
@@ -52,7 +52,7 @@ const StyledCharacter = styled.span`
       : props.theme.fontSizeLarge};
 `;
 
-const Character = ({ children, ...props }) => {
+const Character = ({ children, status, ...props }) => {
   const readAloud = text => {
     if (window.speechSynthesis) {
       const message = new SpeechSynthesisUtterance();
@@ -72,7 +72,7 @@ const Character = ({ children, ...props }) => {
   }, [children]);
 
   return (
-    <Wrapper role="button" onClick={() => readAloud(children)}>
+    <Wrapper role="button" onClick={() => readAloud(children)} status={status}>
       <StyledCharacter {...props}>{children}</StyledCharacter>
       <Octicon icon={Megaphone} size="medium" />
     </Wrapper>
