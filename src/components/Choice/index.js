@@ -187,7 +187,7 @@ export const ChoiceGroup = ({
 
 ChoiceGroup.propTypes = {
   id: PropTypes.string.isRequired,
-  answer: PropTypes.string,
+  answer: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
   children: PropTypes.node,
   right: PropTypes.string.isRequired,
   onAnswer: PropTypes.func.isRequired,
