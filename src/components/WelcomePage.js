@@ -20,7 +20,9 @@ const Title = styled.h1`
 
 const StartButton = styled(Button)`
   flex-grow: 0;
+  font-size: ${props => props.theme.fontSizeBase};
   min-width: 200px;
+  text-transform: uppercase;
   width: 80%;
 
   @media (min-width: 981px) {

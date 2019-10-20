@@ -7,6 +7,7 @@ import { darken } from 'polished';
 import Octicon, { Megaphone } from '@primer/octicons-react';
 
 import { bounceIn, shake } from '../style/keyframes';
+import textToSpeech from '../utils/textToSpeech';
 
 const animationMapper = {
   right: bounceIn,
@@ -53,26 +54,16 @@ const StyledCharacter = styled.span`
 `;
 
 const Character = ({ children, status, ...props }) => {
-  const readAloud = text => {
-    if (window.speechSynthesis) {
-      const message = new SpeechSynthesisUtterance();
-      message.voiceURI = 'native';
-      message.text = text;
-      message.volume = 1;
-      message.rate = 0.5;
-      message.pitch = 1;
-      message.lang = 'ja';
-
-      window.speechSynthesis.speak(message);
-    }
-  };
-
   useEffect(() => {
-    readAloud(children);
+    textToSpeech(children);
   }, [children]);
 
   return (
-    <Wrapper role="button" onClick={() => readAloud(children)} status={status}>
+    <Wrapper
+      role="button"
+      onClick={() => textToSpeech(children)}
+      status={status}
+    >
       <StyledCharacter {...props}>{children}</StyledCharacter>
       <Octicon icon={Megaphone} size="medium" />
     </Wrapper>
@@ -80,7 +71,8 @@ const Character = ({ children, status, ...props }) => {
 };
 
 Character.propTypes = {
-  children: PropTypes.node
+  children: PropTypes.node,
+  status: PropTypes.string
 };
 
 export default Character;

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import PropTypes from 'prop-types';
 
@@ -16,6 +16,7 @@ const CrossButton = styled.button`
   top: 10px;
 
   &:hover {
+    opacity: 0.8;
     cursor: pointer;
   }
 `;
@@ -32,6 +33,20 @@ Portal.defaultProps = {
 };
 
 const CancelButton = ({ onClick }) => {
+  const onKeyDown = e => {
+    if (e.keyCode === 27) {
+      onCancel();
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener('keydown', onKeyDown);
+
+    return () => {
+      document.removeEventListener('keydown', onKeyDown);
+    };
+  }, [onKeyDown]);
+
   const onCancel = () => {
     if (confirm(`Are you sure you want to cancel?`)) {
       onClick();

@@ -25,7 +25,8 @@ const theme = {
   colorBackground: baseColors.colorBlue,
 
   fontFamily: `'Noto Sans JP', sans-serif`,
-  fontFamilyRomanji: `'Roboto', sans-serif`,
+  fontFamilyRomanji: `'Avenir', -apple-system, BlinkMacSystemFont, "Segoe UI",
+  "Roboto", "Oxygen", "Ubuntu", "Helvetica Neue", Arial, sans-serif`,
 
   ...fontSizes
 };
