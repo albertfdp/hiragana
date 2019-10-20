@@ -16,6 +16,7 @@ const Character = styled.span`
   animation-duration: ${props => animationDurationMapper[props.status]}s;
   animation-fill-mode: both;
   animation-name: ${props => animationMapper[props.status]};
+  flex: 1;
   transition: color 300ms ease-in-out;
   font-size: ${props =>
     props.size === 'large'

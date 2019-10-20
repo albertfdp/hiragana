@@ -18,7 +18,7 @@ export const Button = styled.button`
   font-weight: bold;
   justify-content: center;
   margin: 30px 20px;
-  padding: 40px 6px;
+  padding: 30px 6px;
   text-align: center;
   transition: background-color 100ms ease-in, color 100ms ease-in,
     border-color 100ms ease-in, opacity 500ms ease-in;
@@ -112,6 +112,7 @@ ChoiceButton.propTypes = {
 
 const StyledGroup = styled.div`
   display: flex;
+  flex: 2;
   flex-wrap: wrap;
   margin-top: 40px;
   max-width: 900px;
