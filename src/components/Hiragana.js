@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Character = styled.span`
-  color: ${props => props.theme.colorRedLight};
+  transition: color 300ms ease-in-out;
   font-size: ${props =>
     props.size === 'large'
       ? props.theme.fontSizeHuge

@@ -28,7 +28,7 @@ const Bar = styled.div`
   animation-iteration-count: infinite;
   animation-name: ${timeoutKeyframe};
   animation-timing-function: linear;
-  background-color: ${props => props.theme.colorRed};
+  background-color: ${props => props.theme.colorRedLight};
   height: 100%;
 `;
 

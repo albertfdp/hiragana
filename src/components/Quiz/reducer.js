@@ -3,6 +3,7 @@ import { createQuiz } from '../../services/quiz';
 export const initialState = {
   questions: [],
   current: null,
+  lastAnswer: null,
   answers: []
 };
 
@@ -22,16 +23,24 @@ export const reducer = (state, action) => {
 
       return {
         ...state,
-        current: getNext(state.questions, state.current),
+        lastAnswer: action.data,
         answers: state.answers.concat(correctAnswer)
+      };
+    }
+
+    case 'next': {
+      return {
+        ...state,
+        current: getNext(state.questions, state.current),
+        lastAnswer: null
       };
     }
 
     case 'timeout': {
       return {
         ...state,
-        current: getNext(state.questions, state.current),
-        answers: state.answers.concat(false)
+        answers: state.answers.concat(false),
+        lastAnswer: false
       };
     }
     default:
@@ -42,5 +51,6 @@ export const reducer = (state, action) => {
 export const init = () => ({
   questions: createQuiz(),
   current: 0,
+  lastAnswer: null,
   answers: []
 });

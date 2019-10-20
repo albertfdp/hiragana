@@ -19,6 +19,8 @@ const fontSizes = {
 const theme = {
   ...baseColors,
   colorText: baseColors.colorBlack,
+  colorRight: 'green',
+  colorWrong: baseColors.colorRed,
 
   fontFamily: `'Noto Sans JP', sans-serif`,
   fontFamilyRomanji: `'Roboto', sans-serif`,
