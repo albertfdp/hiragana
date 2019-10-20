@@ -1,7 +1,7 @@
 import data from '../data/hiragana';
 import shuffle from '../utils/shuffle';
 
-const DIACRITICS_INDEX = 4; // 48;
+const DIACRITICS_INDEX = 48;
 const DIGRAPHS_INDEX = 72;
 
 function getLimitForLevel(level) {
