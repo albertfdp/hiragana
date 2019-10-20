@@ -31,7 +31,7 @@ export const Button = styled.button`
     color: ${props => props.theme.colorBlue};
   }
 
-  @media (min-width: 960px) {
+  @media (min-width: 980px) {
     padding: 12px 6px;
     width: 40%;
   }
