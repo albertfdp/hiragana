@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useEffect, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
@@ -19,10 +19,19 @@ export const Button = styled.button`
   justify-content: center;
   margin: 0.5em 1em;
   padding: 1em 6px;
+  position: relative;
   text-align: center;
   transition: background-color 100ms ease-in, color 100ms ease-in,
     border-color 100ms ease-in, opacity 500ms ease-in;
   width: 100%;
+
+  &:before {
+    content: "${props => props.index}";
+    font-size: ${props => props.theme.fontSizeBase};
+    left: 20px;
+    opacity: 0.5;
+    position: absolute;
+  }
 
   &:hover,
   &:focus {
@@ -127,14 +136,37 @@ export const ChoiceGroup = ({
   onAnswer,
   onTimeout
 }) => {
+  const onKeyDown = useCallback(
+    e => {
+      if (e.keyCode >= 49 && e.keyCode < 53) {
+        const choice = Number(e.key) - 1;
+        const choices = React.Children.toArray(children).map(
+          child => child.props.value
+        );
+
+        onAnswer(choices[choice]);
+      }
+    },
+    [id]
+  );
+
+  useEffect(() => {
+    document.addEventListener('keydown', onKeyDown);
+
+    return () => {
+      document.removeEventListener('keydown', onKeyDown);
+    };
+  }, [onKeyDown]);
+
   return (
     <Fragment>
       <StyledGroup role="radiogroup">
-        {React.Children.map(children, child => {
+        {React.Children.map(children, (child, i) => {
           const buttonClicked = answer === child.props.value;
           const rightAnswer = right === child.props.value;
 
           return React.cloneElement(child, {
+            index: i + 1,
             answered: buttonClicked,
             otherAnswered: answer !== null && !buttonClicked,
             right: rightAnswer,
