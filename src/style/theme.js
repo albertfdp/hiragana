@@ -33,6 +33,7 @@ const theme = {
 export const GlobalStyle = createGlobalStyle`
   html, body {
     margin: 0;
+    -webkit-font-smoothing: antialiased;
   }
 
   body {

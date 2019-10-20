@@ -1,31 +1,12 @@
 import React, { useReducer, useRef } from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
 
 import Hiragana from '../Hiragana';
 import { ChoiceGroup, ChoiceButton } from '../Choice';
 import ResultPage from '../ResultPage';
 
+import { Container, Question, Answers } from './views';
 import { reducer, initialState, init } from './reducer';
-
-const Container = styled.div`
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-  justify-content: space-around;
-  padding: 20px;
-  color: ${props =>
-    props.status === 'right'
-      ? props.theme.colorRight
-      : props.status === 'wrong'
-      ? props.theme.colorWrong
-      : props.theme.colorText};
-
-  @media (min-width: 981px) {
-    justify-content: center;
-  }
-`;
 
 const getStatusForType = (lastAnswer, correctAnswer) => {
   if (lastAnswer === null) {
@@ -71,22 +52,26 @@ const Quiz = ({ onRestart }) => {
 
   return (
     <Container status={status}>
-      <Hiragana size="large" status={status}>
-        {question}
-      </Hiragana>
-      <ChoiceGroup
-        id={question}
-        right={correctAnswer}
-        answer={lastAnswer}
-        onAnswer={onAnswer}
-        onTimeout={() => onAnswer(null)}
-      >
-        {choices.map(choice => (
-          <ChoiceButton key={choice} value={choice}>
-            {choice}
-          </ChoiceButton>
-        ))}
-      </ChoiceGroup>
+      <Question>
+        <Hiragana size="large" status={status}>
+          {question}
+        </Hiragana>
+      </Question>
+      <Answers>
+        <ChoiceGroup
+          id={question}
+          right={correctAnswer}
+          answer={lastAnswer}
+          onAnswer={onAnswer}
+          onTimeout={() => onAnswer(null)}
+        >
+          {choices.map(choice => (
+            <ChoiceButton key={choice} value={choice}>
+              {choice}
+            </ChoiceButton>
+          ))}
+        </ChoiceGroup>
+      </Answers>
     </Container>
   );
 };

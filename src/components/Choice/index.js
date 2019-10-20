@@ -17,8 +17,8 @@ export const Button = styled.button`
   font-size: ${props => props.theme.fontSizeLarge};
   font-weight: bold;
   justify-content: center;
-  margin: 30px 20px;
-  padding: 30px 6px;
+  margin: 0.5em 1em;
+  padding: 1em 6px;
   text-align: center;
   transition: background-color 100ms ease-in, color 100ms ease-in,
     border-color 100ms ease-in, opacity 500ms ease-in;
@@ -112,10 +112,10 @@ ChoiceButton.propTypes = {
 
 const StyledGroup = styled.div`
   display: flex;
-  flex: 2;
+  flex-grow: 0;
+  flex-shrink: 0;
   flex-wrap: wrap;
-  margin-top: 40px;
-  max-width: 900px;
+  margin: 40px 0;
   width: 100%;
 `;
 

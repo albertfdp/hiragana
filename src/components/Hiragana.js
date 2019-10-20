@@ -1,3 +1,6 @@
+import React, { useEffect } from 'react';
+import PropTypes from 'prop-types';
+
 import styled from 'styled-components';
 
 import { bounceIn, shake } from '../style/keyframes';
@@ -12,22 +15,38 @@ const animationDurationMapper = {
   wrong: 0.7
 };
 
-const Character = styled.span`
+const StyledCharacter = styled.span`
   animation-duration: ${props => animationDurationMapper[props.status]}s;
   animation-fill-mode: both;
   animation-name: ${props => animationMapper[props.status]};
-  flex: 1;
   transition: color 300ms ease-in-out;
+  line-height: 1;
   font-size: ${props =>
     props.size === 'large'
       ? props.theme.fontSizeHuge
       : props.theme.fontSizeLarge};
-
-  @media (max-width: 980px) {
-    align-items: center;
-    display: flex;
-    height: 100%;
-  }
 `;
+
+const Character = ({ children, ...props }) => {
+  useEffect(() => {
+    if (window.speechSynthesis) {
+      const message = new SpeechSynthesisUtterance();
+      message.voiceURI = 'native';
+      message.text = children;
+      message.volume = 1;
+      message.rate = 0.5;
+      message.pitch = 1;
+      message.lang = 'ja';
+
+      window.speechSynthesis.speak(message);
+    }
+  }, [children]);
+
+  return <StyledCharacter {...props}>{children}</StyledCharacter>;
+};
+
+Character.propTypes = {
+  children: PropTypes.node
+};
 
 export default Character;
