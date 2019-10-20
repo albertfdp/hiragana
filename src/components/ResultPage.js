@@ -11,7 +11,7 @@ const Text = styled.h1`
 `;
 
 const Percentage = styled.h2`
-  font-size: ${props => props.theme.fontSizeHuge}px;
+  font-size: ${props => props.theme.fontSizeHuge};
   margin-top: 0;
 
   &:after {

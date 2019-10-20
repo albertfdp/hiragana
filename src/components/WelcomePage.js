@@ -14,12 +14,18 @@ const Container = styled.div`
 `;
 
 const Title = styled.h1`
-  font-size: ${props => props.theme.fontSizeHuge}px;
+  font-size: ${props => props.theme.fontSizeHuge};
   text-align: center;
 `;
 
 const StartButton = styled(Button)`
+  flex-grow: 0;
   min-width: 200px;
+  width: 80%;
+
+  @media (min-width: 980px) {
+    width: initial;
+  }
 `;
 
 const Footer = styled.footer`
@@ -38,11 +44,9 @@ const Welcome = ({ onStart }) => {
   return (
     <Container>
       <Title>ひらがな</Title>
-      <div>
-        <StartButton autoFocus onClick={onStart}>
-          Start Quiz
-        </StartButton>
-      </div>
+      <StartButton autoFocus onClick={onStart}>
+        Start Quiz
+      </StartButton>
       <Footer>
         <span>
           Made by{' '}

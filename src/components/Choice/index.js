@@ -14,7 +14,7 @@ export const Button = styled.button`
   display: flex;
   flex-grow: 1;
   font-family: ${props => props.theme.fontFamilyRomanji};
-  font-size: ${props => props.theme.fontSizeLarge}px;
+  font-size: ${props => props.theme.fontSizeLarge};
   font-weight: bold;
   justify-content: center;
   margin: 10px 20px;
@@ -31,7 +31,7 @@ export const Button = styled.button`
     color: ${props => props.theme.colorBlue};
   }
 
-  @media (min-width: 980px) {
+  @media (min-width: 1200px) {
     padding: 12px 6px;
     width: 40%;
   }

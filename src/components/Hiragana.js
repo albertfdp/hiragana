@@ -20,7 +20,7 @@ const Character = styled.span`
   font-size: ${props =>
     props.size === 'large'
       ? props.theme.fontSizeHuge
-      : props.theme.fontSizeLarge}px;
+      : props.theme.fontSizeLarge};
 `;
 
 export default Character;

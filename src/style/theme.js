@@ -12,9 +12,9 @@ const baseColors = {
 };
 
 const fontSizes = {
-  fontSizeHuge: 128,
-  fontSizeLarge: 21,
-  fontSizeBase: 16
+  fontSizeHuge: `12em`,
+  fontSizeLarge: `2em`,
+  fontSizeBase: `1em`
 };
 
 const theme = {
@@ -37,6 +37,7 @@ export const GlobalStyle = createGlobalStyle`
 
   body {
     font-family: ${props => props.theme.fontFamilyRomanji};
+    font-size: ${props => props.theme.fontSizeBase};
     background-color: ${props => props.theme.colorBackground};
     color: ${props => props.theme.colorText};
   }

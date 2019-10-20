@@ -6,7 +6,7 @@ import styled, { keyframes } from 'styled-components';
 const Container = styled.div`
   background-color: ${props => props.theme.colorGray};
   bottom: 0;
-  height: 10px;
+  height: 1em;
   left: 0;
   position: absolute;
   right: 0;
