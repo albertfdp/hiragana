@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import Timer from './../Timer';
 import { bounceIn } from '../../style/keyframes';
 
-const Button = styled.button`
+export const Button = styled.button`
   align-items: center;
   background-color: transparent;
   border-radius: 3px;

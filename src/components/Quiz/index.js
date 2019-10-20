@@ -1,8 +1,9 @@
-import React, { useReducer, useRef, useEffect, useState } from 'react';
+import React, { useReducer, useRef, useEffect, useCallback } from 'react';
 import styled from 'styled-components';
 
 import Hiragana from '../Hiragana';
 import { ChoiceGroup, ChoiceButton } from '../Choice';
+import ResultPage from '../ResultPage';
 
 import { reducer, initialState, init } from './reducer';
 
@@ -33,17 +34,12 @@ const getStatusForType = (lastAnswer, correctAnswer) => {
   return 'right';
 };
 
-const Quiz = () => {
+const Quiz = ({ onRestart }) => {
   const timer = useRef(null);
-  const [{ current, questions, lastAnswer }, dispatch] = useReducer(
-    reducer,
-    initialState,
-    init
-  );
-
-  useEffect(() => {
-    return () => clearTimeout(timer.current);
-  }, []);
+  const [
+    { current, questions, lastAnswer, answers, completed },
+    dispatch
+  ] = useReducer(reducer, initialState, init);
 
   const onAnswer = choice => {
     clearTimeout(timer.current);
@@ -56,11 +52,19 @@ const Quiz = () => {
 
     timer.current = setTimeout(() => {
       dispatch({ type: 'next' });
-    }, 2000);
+    }, 1000);
   };
 
   const { question, choices, answer: correctAnswer } = questions[current];
   const status = getStatusForType(lastAnswer, correctAnswer);
+
+  if (completed) {
+    return (
+      <Container>
+        <ResultPage onRestart={onRestart} results={answers} />
+      </Container>
+    );
+  }
 
   return (
     <Container status={status}>

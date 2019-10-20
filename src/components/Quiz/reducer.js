@@ -1,10 +1,11 @@
 import { createQuiz } from '../../services/quiz';
 
 export const initialState = {
-  questions: [],
+  answers: [],
+  completed: false,
   current: null,
   lastAnswer: null,
-  answers: []
+  questions: []
 };
 
 function getNext(questions, index) {
@@ -31,6 +32,7 @@ export const reducer = (state, action) => {
     case 'next': {
       return {
         ...state,
+        completed: state.questions.length === state.answers.length,
         current: getNext(state.questions, state.current),
         lastAnswer: null
       };
@@ -49,8 +51,9 @@ export const reducer = (state, action) => {
 };
 
 export const init = () => ({
-  questions: createQuiz(),
+  answers: [],
+  completed: false,
   current: 0,
   lastAnswer: null,
-  answers: []
+  questions: createQuiz()
 });
