@@ -18,17 +18,22 @@ export const Button = styled.button`
   font-weight: bold;
   justify-content: center;
   margin: 10px 20px;
-  padding: 12px 6px;
+  padding: 20px 6px;
   text-align: center;
   transition: background-color 100ms ease-in, color 100ms ease-in,
     border-color 100ms ease-in, opacity 500ms ease-in;
-  width: 40%;
+  width: 100%;
 
   &:hover,
   &:focus {
     cursor: pointer;
     background-color: ${props => props.theme.colorWhite};
     color: ${props => props.theme.colorBlue};
+  }
+
+  @media (min-width: 768px) {
+    padding: 12px 6px;
+    width: 40%;
   }
 `;
 
