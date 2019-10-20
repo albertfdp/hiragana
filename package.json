@@ -6,12 +6,14 @@
   "repository": "https://github.com/albertfdp/hiragana",
   "license": "MIT",
   "scripts": {
-    "start": "webpack-dev-server",
-    "lint": "eslint src",
-    "format": "prettier --write src/**/*.{js,json}",
+    "build-storybook": "build-storybook",
     "build": "webpack",
+    "format": "prettier --write src/**/*.{js,json}",
+    "lint": "eslint src",
+    "start": "webpack-dev-server",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "test": "jest",
+    "test:watch": "yarn test --watch"
   },
   "dependencies": {
     "react": "^16.10.2",

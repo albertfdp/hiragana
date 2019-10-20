@@ -10,7 +10,9 @@ describe('The Quiz reducer', () => {
 
     expect(state).toEqual({
       answers: [],
+      completed: false,
       current: null,
+      lastAnswer: null,
       questions: []
     });
   });
@@ -35,7 +37,7 @@ describe('The Quiz reducer', () => {
       result = renderHook(() => useReducer(reducer, initialState, init)).result;
     });
 
-    it('updates the current', () => {
+    it('updates the answers', () => {
       const [{ questions }, dispatch] = result.current;
 
       const currentQuestion = questions[0];
@@ -47,7 +49,7 @@ describe('The Quiz reducer', () => {
 
       const [nextState] = result.current;
       expect(nextState).toHaveProperty('answers', [true]);
-      expect(nextState).toHaveProperty('current', 1);
+      expect(nextState).toHaveProperty('current', 0);
     });
   });
 
@@ -58,7 +60,7 @@ describe('The Quiz reducer', () => {
       result = renderHook(() => useReducer(reducer, initialState, init)).result;
     });
 
-    it('updates the current', () => {
+    it('updates the answers', () => {
       // eslint-disable-next-line no-unused-vars
       const [_, dispatch] = result.current;
 
@@ -68,7 +70,7 @@ describe('The Quiz reducer', () => {
 
       const [state] = result.current;
       expect(state).toHaveProperty('answers', [false]);
-      expect(state).toHaveProperty('current', 1);
+      expect(state).toHaveProperty('current', 0);
     });
   });
 });
