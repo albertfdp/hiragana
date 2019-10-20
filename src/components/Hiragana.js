@@ -2,6 +2,9 @@ import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 import styled from 'styled-components';
+import { darken } from 'polished';
+
+import Octicon, { Megaphone } from '@primer/octicons-react';
 
 import { bounceIn, shake } from '../style/keyframes';
 
@@ -14,6 +17,28 @@ const animationDurationMapper = {
   right: 1,
   wrong: 0.7
 };
+
+const Wrapper = styled.div`
+  background-color: ${props => darken(0.1, props.theme.colorBackground)};
+  border-radius: 4px;
+  box-shadow: 0 0 2px 2px ${props => darken(0.3, props.theme.colorBackground)};
+  cursor: pointer;
+  padding: 20px;
+  position: relative;
+  transition: transform 100ms ease-in;
+
+  & > svg {
+    bottom: 10px;
+    fill: ${props => props.theme.colorGray} !important;
+    font-size: 20px;
+    position: absolute;
+    right: 10px;
+  }
+
+  &:active {
+    transform: scale(1.1);
+  }
+`;
 
 const StyledCharacter = styled.span`
   animation-duration: ${props => animationDurationMapper[props.status]}s;
@@ -28,11 +53,11 @@ const StyledCharacter = styled.span`
 `;
 
 const Character = ({ children, ...props }) => {
-  useEffect(() => {
+  const readAloud = text => {
     if (window.speechSynthesis) {
       const message = new SpeechSynthesisUtterance();
       message.voiceURI = 'native';
-      message.text = children;
+      message.text = text;
       message.volume = 1;
       message.rate = 0.5;
       message.pitch = 1;
@@ -40,9 +65,18 @@ const Character = ({ children, ...props }) => {
 
       window.speechSynthesis.speak(message);
     }
+  };
+
+  useEffect(() => {
+    readAloud(children);
   }, [children]);
 
-  return <StyledCharacter {...props}>{children}</StyledCharacter>;
+  return (
+    <Wrapper role="button" onClick={() => readAloud(children)}>
+      <StyledCharacter {...props}>{children}</StyledCharacter>
+      <Octicon icon={Megaphone} size="medium" />
+    </Wrapper>
+  );
 };
 
 Character.propTypes = {
