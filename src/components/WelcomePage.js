@@ -22,6 +22,18 @@ const StartButton = styled(Button)`
   min-width: 200px;
 `;
 
+const Footer = styled.footer`
+  bottom: 10px;
+  opacity: 0.4;
+  position: absolute;
+  right: 20px;
+`;
+
+const Link = styled.a`
+  text-decoration: underline;
+  color: ${props => props.theme.colorWhite};
+`;
+
 const Welcome = ({ onStart }) => {
   return (
     <Container>
@@ -31,6 +43,18 @@ const Welcome = ({ onStart }) => {
           Start Quiz
         </StartButton>
       </div>
+      <Footer>
+        <span>
+          Made by{' '}
+          <Link
+            href="https://nandez.cat?utm_source=hiragana"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            nandez.cat
+          </Link>
+        </span>
+      </Footer>
     </Container>
   );
 };
