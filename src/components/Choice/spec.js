@@ -8,18 +8,16 @@ import { ChoiceGroup, ChoiceButton } from '.';
 jest.useFakeTimers();
 
 describe('<Choice />', () => {
-  let onAnswer;
-  let onTimeout;
-
-  beforeEach(() => {
-    onAnswer = jest.fn();
-    onTimeout = jest.fn();
-  });
+  let rendered;
 
   describe('<ChoiceGroup />', () => {
-    let rendered;
+    let onAnswer;
+    let onTimeout;
 
     beforeEach(() => {
+      onAnswer = jest.fn();
+      onTimeout = jest.fn();
+
       rendered = render(
         <ChoiceGroup
           id="shi"
@@ -95,6 +93,60 @@ describe('<Choice />', () => {
         });
 
         expect(onTimeout).toHaveBeenCalled();
+      });
+    });
+  });
+
+  describe('<ChoiceButton />', () => {
+    let onClick;
+
+    beforeEach(() => {
+      onClick = jest.fn();
+    });
+
+    describe('when other button was answered', () => {
+      beforeEach(() => {
+        rendered = render(
+          <ChoiceButton
+            index={0}
+            answered={false}
+            otherAnswered
+            right={false}
+            onClick={onClick}
+          >
+            し
+          </ChoiceButton>
+        );
+      });
+
+      it('renders a button', () => {
+        const button = rendered.getByRole('button');
+
+        expect(button).toHaveTextContent('し');
+        expect(button).toBeDisabled();
+      });
+    });
+
+    describe('when not answered', () => {
+      beforeEach(() => {
+        rendered = render(
+          <ChoiceButton
+            index={0}
+            answered={false}
+            otherAnswered={false}
+            rightAnswer
+            onClick={onClick}
+          >
+            し
+          </ChoiceButton>
+        );
+      });
+
+      it('renders a button', () => {
+        const button = rendered.getByRole('button');
+
+        expect(button).toHaveTextContent('し');
+        expect(button).not.toBeDisabled();
       });
     });
   });

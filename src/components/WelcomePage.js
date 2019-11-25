@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import styled from 'styled-components';
 
-import { Button } from './Choice';
+import { Button } from './Choice/styled';
 
 const Container = styled.div`
   align-items: center;
