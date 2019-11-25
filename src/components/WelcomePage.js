@@ -1,9 +1,8 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import styled from 'styled-components';
 
-import { Button } from './Choice/styled';
+import { Link } from '@reach/router';
 
 const Container = styled.div`
   align-items: center;
@@ -18,7 +17,7 @@ const Title = styled.h1`
   text-align: center;
 `;
 
-const StartButton = styled(Button)`
+const StartButton = styled(Link)`
   flex-grow: 0;
   font-size: ${props => props.theme.fontSizeBase};
   min-width: 200px;
@@ -37,36 +36,30 @@ const Footer = styled.footer`
   right: 20px;
 `;
 
-const Link = styled.a`
+const ExternalLink = styled.a`
   text-decoration: underline;
   color: ${props => props.theme.colorWhite};
 `;
 
-const Welcome = ({ onStart }) => {
+const Welcome = () => {
   return (
     <Container>
       <Title>ひらがな</Title>
-      <StartButton autoFocus onClick={onStart}>
-        Start Quiz
-      </StartButton>
+      <StartButton to="/quiz">Start Quiz</StartButton>
       <Footer>
         <span>
           Made by{' '}
-          <Link
+          <ExternalLink
             href="https://nandez.cat?utm_source=hiragana"
             rel="noopener noreferrer"
             target="_blank"
           >
             nandez.cat
-          </Link>
+          </ExternalLink>
         </span>
       </Footer>
     </Container>
   );
-};
-
-Welcome.propTypes = {
-  onStart: PropTypes.func.isRequired
 };
 
 export default Welcome;

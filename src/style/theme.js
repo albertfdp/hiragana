@@ -44,12 +44,16 @@ export const GlobalStyle = createGlobalStyle`
     color: ${props => props.theme.colorText};
   }
 
-  html, body, #root {
+  html, body, #root, .router {
     height: 100%;
   }
 
-  #root {
+  #root, .router {
     display: flex;
+  }
+
+  .router {
+    flex-grow: 1;
   }
 `;
 

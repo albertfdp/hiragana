@@ -1,16 +1,17 @@
-import React, { useState } from 'react';
+import React from 'react';
+
+import { Router, navigate } from '@reach/router';
 
 import Quiz from '../Quiz';
 import Welcome from '../WelcomePage';
 
 const App = () => {
-  const [started, setStarted] = useState(false);
-
-  if (!started) {
-    return <Welcome onStart={() => setStarted(true)} />;
-  }
-
-  return <Quiz level="easy" onRestart={() => setStarted(false)} />;
+  return (
+    <Router className="router">
+      <Quiz level="easy" path="/quiz" onRestart={() => navigate('/')} />
+      <Welcome path="/" />
+    </Router>
+  );
 };
 
 export default App;
