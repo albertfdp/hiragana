@@ -5,11 +5,11 @@ export const initialState = {
   completed: false,
   current: null,
   lastAnswer: null,
-  questions: []
+  quiz: null
 };
 
-function getNext(questions, index) {
-  if (index < questions.length - 1) {
+function getNext(quiz, index) {
+  if (index < quiz.size - 1) {
     return index + 1;
   }
 
@@ -19,8 +19,8 @@ function getNext(questions, index) {
 export const reducer = (state, action) => {
   switch (action.type) {
     case 'answer': {
-      const { answer } = state.questions[state.current];
-      const correctAnswer = answer === action.data;
+      const question = state.quiz.get(state.current);
+      const correctAnswer = question.checkAnswer(action.data);
 
       return {
         ...state,
@@ -32,8 +32,8 @@ export const reducer = (state, action) => {
     case 'next': {
       return {
         ...state,
-        completed: state.questions.length === state.answers.length,
-        current: getNext(state.questions, state.current),
+        completed: state.quiz.size === state.answers.length,
+        current: getNext(state.quiz, state.current),
         lastAnswer: null
       };
     }
@@ -50,10 +50,10 @@ export const reducer = (state, action) => {
   }
 };
 
-export const init = () => ({
+export const createInit = kana => () => ({
   answers: [],
   completed: false,
   current: 0,
   lastAnswer: null,
-  questions: createQuiz()
+  quiz: createQuiz(kana)
 });

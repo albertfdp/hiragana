@@ -8,7 +8,7 @@ import ResultPage from '../ResultPage';
 import { Container, Question, Answers } from './views';
 import CancelButton from '../CancelButton';
 
-import { reducer, initialState, init } from './reducer';
+import { reducer, initialState, createInit } from './reducer';
 
 const getStatusForType = (lastAnswer, correctAnswer) => {
   if (lastAnswer === null) {
@@ -22,9 +22,9 @@ const getStatusForType = (lastAnswer, correctAnswer) => {
   return 'right';
 };
 
-const Quiz = ({ onRestart }) => {
+const Quiz = ({ kana, onRestart }) => {
   const timer = useRef(null);
-  const [state, dispatch] = useReducer(reducer, initialState, init);
+  const [state, dispatch] = useReducer(reducer, initialState, createInit(kana));
 
   const onAnswer = choice => {
     clearTimeout(timer.current);
@@ -40,9 +40,10 @@ const Quiz = ({ onRestart }) => {
     }, 1000);
   };
 
-  const { current, questions, lastAnswer, answers, completed } = state;
-  const { question, choices, solution: correctAnswer } = questions[current];
-  const status = getStatusForType(lastAnswer, correctAnswer);
+  const { current, quiz, lastAnswer, answers, completed } = state;
+  const question = quiz.get(current);
+
+  const status = getStatusForType(lastAnswer, question.solution);
 
   if (completed) {
     return (
@@ -57,18 +58,18 @@ const Quiz = ({ onRestart }) => {
       <CancelButton onClick={onRestart} />
       <Question>
         <Hiragana size="large" status={status}>
-          {question}
+          {question.question}
         </Hiragana>
       </Question>
       <Answers>
         <ChoiceGroup
-          id={question}
-          right={correctAnswer}
+          id={question.question}
+          right={question.solution}
           answer={lastAnswer}
           onAnswer={onAnswer}
           onTimeout={() => onAnswer(null)}
         >
-          {choices.map(choice => (
+          {question.choices.map(choice => (
             <ChoiceButton key={choice} value={choice}>
               {choice}
             </ChoiceButton>
@@ -80,6 +81,7 @@ const Quiz = ({ onRestart }) => {
 };
 
 Quiz.propTypes = {
+  kana: PropTypes.oneOf(['hiragana', 'katakana']),
   onRestart: PropTypes.func
 };
 
