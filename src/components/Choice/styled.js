@@ -18,6 +18,7 @@ export const Button = styled.button`
   padding: 1em 6px;
   position: relative;
   text-align: center;
+  text-decoration: none;
   transform: scale(1);
   transition: background-color 100ms ease-in, color 100ms ease-in,
     border-color 100ms ease-in, opacity 500ms ease-in, transform 100ms ease-in-out;

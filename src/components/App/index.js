@@ -8,7 +8,7 @@ import Welcome from '../WelcomePage';
 const App = () => {
   return (
     <Router className="router">
-      <Quiz level="easy" path="/quiz" onRestart={() => navigate('/')} />
+      <Quiz level="easy" path="/quiz/:kana" onRestart={() => navigate('/')} />
       <Welcome path="/" />
     </Router>
   );

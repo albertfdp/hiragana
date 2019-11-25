@@ -12,7 +12,8 @@ const baseColors = {
 };
 
 const fontSizes = {
-  fontSizeHuge: `12em`,
+  fontSizeHuge: `6em`,
+  fontSizeLarger: `4em`,
   fontSizeLarge: `2em`,
   fontSizeBase: `1em`
 };
