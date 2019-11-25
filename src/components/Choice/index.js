@@ -73,7 +73,7 @@ export const ChoiceGroup = ({
           return React.cloneElement(child, {
             index: i + 1,
             answered: buttonClicked,
-            otherAnswered: answer !== null && !buttonClicked,
+            otherAnswered: !!answer && !buttonClicked,
             right: rightAnswer,
             onClick: () => onAnswer(child.props.value)
           });

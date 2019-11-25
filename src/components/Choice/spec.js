@@ -36,9 +36,7 @@ describe('<Choice />', () => {
     });
 
     it('renders two choices', () => {
-      const { queryAllByRole } = rendered;
-
-      expect(queryAllByRole('button')).toHaveLength(2);
+      expect(rendered.container.firstChild).toMatchSnapshot();
     });
 
     describe('with event keydown', () => {
@@ -119,11 +117,8 @@ describe('<Choice />', () => {
         );
       });
 
-      it('renders a button', () => {
-        const button = rendered.getByRole('button');
-
-        expect(button).toHaveTextContent('し');
-        expect(button).toBeDisabled();
+      it('renders a disabled button', () => {
+        expect(rendered.container.firstChild).toMatchSnapshot();
       });
     });
 
@@ -147,6 +142,8 @@ describe('<Choice />', () => {
 
         expect(button).toHaveTextContent('し');
         expect(button).not.toBeDisabled();
+
+        expect(rendered.container.firstChild).toMatchSnapshot();
       });
     });
   });

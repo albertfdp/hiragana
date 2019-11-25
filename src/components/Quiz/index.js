@@ -41,7 +41,7 @@ const Quiz = ({ onRestart }) => {
   };
 
   const { current, questions, lastAnswer, answers, completed } = state;
-  const { question, choices, answer: correctAnswer } = questions[current];
+  const { question, choices, solution: correctAnswer } = questions[current];
   const status = getStatusForType(lastAnswer, correctAnswer);
 
   if (completed) {

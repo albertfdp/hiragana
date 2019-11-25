@@ -1,0 +1,304 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Choice /> <ChoiceButton /> when not answered renders a button 1`] = `
+.c0 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background-color: transparent;
+  border-radius: 3px;
+  border: 2px solid;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  font-weight: bold;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  margin: 0.5em 1em;
+  padding: 1em 6px;
+  position: relative;
+  text-align: center;
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  -webkit-transition: background-color 100ms ease-in,color 100ms ease-in, border-color 100ms ease-in,opacity 500ms ease-in,-webkit-transform 100ms ease-in-out;
+  -webkit-transition: background-color 100ms ease-in,color 100ms ease-in, border-color 100ms ease-in,opacity 500ms ease-in,transform 100ms ease-in-out;
+  transition: background-color 100ms ease-in,color 100ms ease-in, border-color 100ms ease-in,opacity 500ms ease-in,transform 100ms ease-in-out;
+  width: 100%;
+}
+
+.c0:before {
+  content: "0";
+  left: 20px;
+  opacity: 0.5;
+  position: absolute;
+}
+
+.c0:active {
+  -webkit-transform: scale(1.01);
+  -ms-transform: scale(1.01);
+  transform: scale(1.01);
+}
+
+.c0:hover,
+.c0:focus {
+  cursor: pointer;
+}
+
+@media (min-width:981px) {
+  .c0 {
+    margin: 10px 20px;
+    padding: 12px 6px;
+    width: 40%;
+  }
+}
+
+<button
+  class="c0"
+>
+  し
+</button>
+`;
+
+exports[`<Choice /> <ChoiceButton /> when other button was answered renders a disabled button 1`] = `
+.c0 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background-color: transparent;
+  border-radius: 3px;
+  border: 2px solid;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  font-weight: bold;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  margin: 0.5em 1em;
+  padding: 1em 6px;
+  position: relative;
+  text-align: center;
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  -webkit-transition: background-color 100ms ease-in,color 100ms ease-in, border-color 100ms ease-in,opacity 500ms ease-in,-webkit-transform 100ms ease-in-out;
+  -webkit-transition: background-color 100ms ease-in,color 100ms ease-in, border-color 100ms ease-in,opacity 500ms ease-in,transform 100ms ease-in-out;
+  transition: background-color 100ms ease-in,color 100ms ease-in, border-color 100ms ease-in,opacity 500ms ease-in,transform 100ms ease-in-out;
+  width: 100%;
+  opacity: 0.5;
+}
+
+.c0:before {
+  content: "0";
+  left: 20px;
+  opacity: 0.5;
+  position: absolute;
+}
+
+.c0:active {
+  -webkit-transform: scale(1.01);
+  -ms-transform: scale(1.01);
+  transform: scale(1.01);
+}
+
+.c0:hover,
+.c0:focus {
+  cursor: pointer;
+}
+
+.c0:hover,
+.c0:focus {
+  cursor: initial;
+  background-color: transparent;
+}
+
+@media (min-width:981px) {
+  .c0 {
+    margin: 10px 20px;
+    padding: 12px 6px;
+    width: 40%;
+  }
+}
+
+<button
+  class="c0"
+  disabled=""
+>
+  し
+</button>
+`;
+
+exports[`<Choice /> <ChoiceGroup /> renders two choices 1`] = `
+.c1 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background-color: transparent;
+  border-radius: 3px;
+  border: 2px solid;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  font-weight: bold;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  margin: 0.5em 1em;
+  padding: 1em 6px;
+  position: relative;
+  text-align: center;
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  -webkit-transition: background-color 100ms ease-in,color 100ms ease-in, border-color 100ms ease-in,opacity 500ms ease-in,-webkit-transform 100ms ease-in-out;
+  -webkit-transition: background-color 100ms ease-in,color 100ms ease-in, border-color 100ms ease-in,opacity 500ms ease-in,transform 100ms ease-in-out;
+  transition: background-color 100ms ease-in,color 100ms ease-in, border-color 100ms ease-in,opacity 500ms ease-in,transform 100ms ease-in-out;
+  width: 100%;
+}
+
+.c1:before {
+  content: "1";
+  left: 20px;
+  opacity: 0.5;
+  position: absolute;
+}
+
+.c1:active {
+  -webkit-transform: scale(1.01);
+  -ms-transform: scale(1.01);
+  transform: scale(1.01);
+}
+
+.c1:hover,
+.c1:focus {
+  cursor: pointer;
+}
+
+.c2 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background-color: transparent;
+  border-radius: 3px;
+  border: 2px solid;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  font-weight: bold;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  margin: 0.5em 1em;
+  padding: 1em 6px;
+  position: relative;
+  text-align: center;
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  -webkit-transition: background-color 100ms ease-in,color 100ms ease-in, border-color 100ms ease-in,opacity 500ms ease-in,-webkit-transform 100ms ease-in-out;
+  -webkit-transition: background-color 100ms ease-in,color 100ms ease-in, border-color 100ms ease-in,opacity 500ms ease-in,transform 100ms ease-in-out;
+  transition: background-color 100ms ease-in,color 100ms ease-in, border-color 100ms ease-in,opacity 500ms ease-in,transform 100ms ease-in-out;
+  width: 100%;
+}
+
+.c2:before {
+  content: "2";
+  left: 20px;
+  opacity: 0.5;
+  position: absolute;
+}
+
+.c2:active {
+  -webkit-transform: scale(1.01);
+  -ms-transform: scale(1.01);
+  transform: scale(1.01);
+}
+
+.c2:hover,
+.c2:focus {
+  cursor: pointer;
+}
+
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 0;
+  -webkit-flex-grow: 0;
+  -ms-flex-positive: 0;
+  flex-grow: 0;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  margin: 40px 0;
+  width: 100%;
+}
+
+@media (min-width:981px) {
+  .c1 {
+    margin: 10px 20px;
+    padding: 12px 6px;
+    width: 40%;
+  }
+}
+
+@media (min-width:981px) {
+  .c2 {
+    margin: 10px 20px;
+    padding: 12px 6px;
+    width: 40%;
+  }
+}
+
+<div
+  class="c0"
+  role="radiogroup"
+>
+  <button
+    class="c1"
+    value="shi"
+  >
+    し
+  </button>
+  <button
+    class="c2"
+    value="su"
+  >
+    す
+  </button>
+</div>
+`;
