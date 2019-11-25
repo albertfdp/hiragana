@@ -150,7 +150,9 @@ export const ChoiceGroup = ({
           child => child.props.value
         );
 
-        onAnswer(choices[choice]);
+        if (choices[choice]) {
+          onAnswer(choices[choice]);
+        }
       }
     },
     [id]

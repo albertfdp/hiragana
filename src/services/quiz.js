@@ -1,6 +1,8 @@
 import data from '../data/hiragana';
 import shuffle from '../utils/shuffle';
 
+import Question from '../models/QuestionModel';
+
 const DIACRITICS_INDEX = 48;
 const DIGRAPHS_INDEX = 72;
 
@@ -38,11 +40,11 @@ export const createQuiz = (level = 'easy') => {
       }
     }
 
-    return {
+    return new Question({
       question: hiragana,
-      answer: correctAnswer,
+      solution: correctAnswer,
       choices: shuffle(choices)
-    };
+    });
   });
 };
 
